@@ -1,95 +1,157 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laza AI - Pilote Social Media Malagasy</title>
-    <!-- Chargement des icônes modernes -->
-    <script src="https://unpkg.com"></script>
-    <!-- Liaison avec le fichier de style CSS -->
-    <link rel="stylesheet" href="style.css">
+    <title>CV Évolutif Malagasy — Soratra</title>
+    <!-- Chargement de Tailwind CSS -->
+    <script src="https://tailwindcss.com"></script>
+    <!-- Police ultra-moderne Geek/SaaS : Geist ou Inter -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-slide { animation: slideIn 0.3s ease-out forwards; }
+    </style>
 </head>
-<body>
+<body class="bg-slate-50/50 text-slate-900 min-h-screen flex flex-col antialiased">
 
-    <nav>
-        <div class="logo"><i data-lucide="cpu"></i> LAZA<span>.AI</span></div>
-        <div style="font-size: 0.875rem; color: var(--text-muted);">🇲🇬 Outil conçu pour le marché Malagasy</div>
-    </nav>
-
-    <div class="app-container">
-        
-        <!-- COLONNE GAUCHE : Saisie -->
-        <div>
-            <div class="card">
-                <h2><i data-lucide="pen-tool" style="color: var(--primary);"></i> 1. Composition assistée</h2>
-                
-                <label>Réseau ciblé :</label>
-                <div class="network-selector">
-                    <button class="network-btn active" data-net="facebook" id="btn-fb"><i data-lucide="facebook"></i> Facebook</button>
-                    <button class="network-btn" data-net="instagram" id="btn-insta"><i data-lucide="instagram"></i> Instagram</button>
-                    <button class="network-btn" data-net="tiktok" id="btn-tk"><i data-lucide="video"></i> TikTok</button>
-                </div>
-
-                <div class="form-group">
-                    <label for="prompt">Votre idée de produit ou service :</label>
-                    <textarea id="prompt" rows="3" placeholder="Ex: Vente de friperie de luxe en arrivage direct, vestes et robes d'été..."></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="language">Langue d'écriture de l'IA :</label>
-                    <select id="language">
-                        <option value="mg">🇲🇬 Malagasy (Style accrocheur de Tana)</option>
-                        <option value="fr">🇫🇷 Français (Professionnel / Export)</option>
-                    </select>
-                </div>
-
-                <button class="btn-generate" id="btn-generate"><i data-lucide="wand-2"></i> Générer le Post Localisé</button>
+    <!-- HEADER MINIMALISTE -->
+    <header class="border-b border-slate-200/80 bg-white/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <span class="text-xl">🇲🇬</span>
+                <span class="font-bold text-lg tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">Soratra Malagasy</span>
+                <span class="text-[10px] font-semibold bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-md border border-emerald-200/60">V1.0 PROTOTYPE</span>
             </div>
+            <div class="flex items-center gap-2 text-xs font-medium text-slate-500 bg-slate-100 px-3 py-1.5 rounded-full">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                Réseau Sécurisé National
+            </div>
+        </div>
+    </header>
 
-            <!-- BLOC TARIFS MOBILE MONEY -->
-            <div class="card">
-                <h2><i data-lucide="wallet" style="color: var(--success);"></i> Modèle Économique (Simulation Mobile Money)</h2>
-                <div class="pricing-grid">
-                    <div class="price-card">
-                        <h3>Plan Mora</h3>
-                        <div class="price">Gratuit</div>
-                        <p style="font-size:0.8rem; color:var(--text-muted)">3 posts / semaine. Idéal pour débuter sa page commerce.</p>
+    <!-- CONTENU PRINCIPAL -->
+    <main class="flex-grow max-w-5xl w-full mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- PANNEAU DE CONTRÔLE (Simulateur) -->
+        <div class="md:col-span-1 space-y-6">
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm shadow-slate-100/50">
+                <h2 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-4">✨ Générateur d'Événements</h2>
+                
+                <!-- Ajout personnalisé libre -->
+                <div class="mb-5 pb-5 border-b border-slate-100">
+                    <label class="block text-xs font-semibold text-slate-600 mb-2">Réussite personnalisée :</label>
+                    <div class="flex gap-2">
+                        <input id="custom-input" type="text" placeholder="Ex: Création d'une startup à Tana..." class="w-full text-sm bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition">
+                        <button onclick="ajouterReussitePerso()" class="bg-slate-900 hover:bg-slate-800 text-white text-sm font-medium px-3 rounded-xl transition flex items-center justify-center">
+                            ➕
+                        </button>
                     </div>
-                    <div class="price-card premium">
-                        <h3>Plan Pro Tana</h3>
-                        <div class="price">20 000 Ar <span style="font-size:0.8rem">/mois</span></div>
-                        <p style="font-size:0.8rem; color:var(--text-muted)">Générations illimitées + IA bilingue. Paiement Mvola / Orange / Airtel.</p>
-                    </div>
+                </div>
+
+                <!-- Boutons prédéfinis -->
+                <div class="space-y-2">
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Modèles rapides :</label>
+                    <button onclick="ajouterEvenement('👶', 'Naissance', 'Création du Carnet de Vie Numérique officiel.')" class="w-full flex items-center gap-3 bg-slate-50 hover:bg-slate-100/80 text-left p-3 rounded-xl border border-slate-200/60 transition group">
+                        <span class="text-lg bg-white p-1.5 rounded-lg border border-slate-200/40 shadow-sm">👶</span>
+                        <div>
+                            <p class="text-xs font-bold text-slate-800">Déclarer une Naissance</p>
+                            <p class="text-[11px] text-slate-400">Étape 0 — Carnet de vie</p>
+                        </div>
+                    </button>
+
+                    <button onclick="ajouterEvenement('🎓', 'Éducation', 'Obtention officielle du diplôme du CEPE.')" class="w-full flex items-center gap-3 bg-slate-50 hover:bg-slate-100/80 text-left p-3 rounded-xl border border-slate-200/60 transition group">
+                        <span class="text-lg bg-white p-1.5 rounded-lg border border-slate-200/40 shadow-sm">🎓</span>
+                        <div>
+                            <p class="text-xs font-bold text-slate-800">Validation du CEPE</p>
+                            <p class="text-[11px] text-slate-400">Étape 1 — Primaire</p>
+                        </div>
+                    </button>
+
+                    <button onclick="ajouterEvenement('🏆', 'Compétition', 'Médaille d\'or obtenue au tournoi inter-régional.')" class="w-full flex items-center gap-3 bg-slate-50 hover:bg-slate-100/80 text-left p-3 rounded-xl border border-slate-200/60 transition group">
+                        <span class="text-lg bg-white p-1.5 rounded-lg border border-slate-200/40 shadow-sm">🏆</span>
+                        <div>
+                            <p class="text-xs font-bold text-slate-800">Exploit Sportif / Artistique</p>
+                            <p class="text-[11px] text-slate-400">Extrascolaire</p>
+                        </div>
+                    </button>
+
+                    <button onclick="ajouterEvenement('🚀', 'Engagement', 'Co-fondateur d\'une association pour le reboisement.')" class="w-full flex items-center gap-3 bg-slate-50 hover:bg-slate-100/80 text-left p-3 rounded-xl border border-slate-200/60 transition group">
+                        <span class="text-lg bg-white p-1.5 rounded-lg border border-slate-200/40 shadow-sm">🚀</span>
+                        <div>
+                            <p class="text-xs font-bold text-slate-800">Action Citoyenne</p>
+                            <p class="text-[11px] text-slate-400">Impact Communautaire</p>
+                        </div>
+                    </button>
                 </div>
             </div>
         </div>
 
-        <!-- COLONNE DROITE : Aperçu -->
-        <div>
-            <div class="card">
-                <h2><i data-lucide="eye" style="color: var(--tiktok);"></i> 2. Aperçu du Post</h2>
-                <div class="preview-box">
-                    <div class="preview-header">
-                        <div class="preview-avatar" id="networkAvatar"></div>
+        <!-- PORTFOLIO / CV EVOLUTIF -->
+        <div class="md:col-span-2 space-y-6">
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm shadow-slate-100/50 overflow-hidden">
+                
+                <!-- Profil Header Épuré -->
+                <div class="p-6 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-gradient-to-b from-slate-50 to-white">
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-slate-900 to-slate-700 text-white flex items-center justify-center text-lg font-bold shadow-md shadow-slate-900/10">
+                            TM
+                        </div>
                         <div>
-                            <strong id="previewAccountName">Ma Boutique en Ligne</strong>
-                            <div style="font-size: 0.75rem; color: #65676b;">À l'instant • Public</div>
+                            <h2 class="text-lg font-bold text-slate-900">Tojo Mamy</h2>
+                            <p class="text-xs font-medium text-slate-400">ID Citoyen : <span class="font-mono text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded">MG-2026-883A</span></p>
                         </div>
                     </div>
-                    <div class="preview-body" id="previewText">Votre texte adapté aux codes de vente malagasy s'affichera ici...</div>
+                    <div class="text-left sm:text-right">
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 block">Statut du registre</span>
+                        <span class="text-xs font-semibold text-emerald-600 bg-emerald-50 border border-emerald-200/50 px-2.5 py-1 rounded-full inline-block mt-1">✓ Certifié Infalsifiable</span>
+                    </div>
                 </div>
 
-                <h3 style="margin-top: 2rem; font-size: 1rem;"><i data-lucide="calendar" style="color: var(--success);"></i> File d'attente d'envoi</h3>
-                <div id="scheduleList"><p style="color: var(--text-muted); font-size: 0.85rem;">Aucun post planifié.</p></div>
+                <!-- FIL D'ACTUALITÉ DU CV -->
+                <div class="p-6">
+                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-6">Registre Chronologique</h3>
+                    
+                    <div id="timeline" class="relative border-l border-slate-200 ml-4 space-y-6">
+                        <!-- Événement Initial -->
+                        <div class="relative pl-7">
+                            <div class="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-slate-300 ring-4 ring-white"></div>
+                            <div class="bg-slate-50 border border-slate-200/40 p-3 rounded-xl max-w-md">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="text-sm">⚙️</span>
+                                    <span class="text-xs font-bold text-slate-700">Système</span>
+                                    <span class="text-[10px] text-slate-400 font-medium ml-auto">07/07/2026</span>
+                                </div>
+                                <p class="text-xs text-slate-600 font-medium">Initialisation réussie de la blockchain civique.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
-    </div>
+    </main>
 
-    <!-- Liaison avec le fichier de logique JavaScript -->
-    <script src="script.js"></script>
-</body>
-                </html>
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-slate-200 text-slate-400 text-xs py-6 text-center">
+        <p>&copy; 2026 Soratra Malagasy. Conçu pour l'avenir numérique de Madagascar.</p>
+    </footer>
 
- 
+    <!-- LOGIQUE LOGICIELLE (JavaScript) -->
+    <script>
+        function ajouterEvenement(emoji, categorie, description) {
+            const timeline = document.getElementById('timeline');
+            const nouvelElement = document.createElement('div');
+            
+            // Design ultra moderne du bloc d'événement
+            nouvelElement.className = "relative pl-7 animate-slide";
+            
+            nouvelElement.innerHTML = `
+                <div class="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-emerald-500 ring-4 ring-white"></div>
